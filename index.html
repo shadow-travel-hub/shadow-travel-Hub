@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shadow Travel Hub | Car Travels & Sightseeing</title>
-<meta name="description" content="Shadow Travel Hub - safe, comfortable car travels, sightseeing tours, airport transfers and pickup & drop services.">
+<title>Shadow Travel Hub | Car Travels in Ooty</title>
+<meta name="description" content="Shadow Travel Hub - car travels in Ooty. Ooty to Coimbatore, sightseeing tours, airport transfers and pickup & drop services.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{--green:#0f7a2b;--dark:#0b0f0c;--gold:#d9a02b;--light:#f4f8f3;--text:#2b332d}
@@ -17,14 +17,15 @@ header{position:sticky;top:0;background:#fff;z-index:50;box-shadow:0 2px 10px rg
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{font-family:'Fredoka',sans-serif;font-size:1.4rem;color:var(--green)}
 .logo span{color:var(--gold)}
-nav ul{display:flex;gap:22px;list-style:none;font-weight:600}
+nav ul{display:flex;gap:20px;list-style:none;font-weight:600}
 nav a:hover{color:var(--green)}
 .burger{display:none;background:none;border:0;font-size:1.8rem;cursor:pointer}
 .hero{min-height:75vh;display:flex;align-items:center;color:#fff;
-background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1400') center/cover}
+background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url('car1.jpg') center/cover,url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1400') center/cover}
 .hero small{color:var(--gold);font-weight:600}
 .hero h1{font-family:'Fredoka',sans-serif;font-size:clamp(2rem,6vw,3.6rem);margin:6px 0 10px}
 .hero p{max-width:520px;margin-bottom:22px}
+.loc{display:inline-block;background:rgba(255,255,255,.18);padding:6px 14px;border-radius:20px;font-weight:600;margin-bottom:16px}
 .btn{display:inline-block;background:var(--green);color:#fff;padding:12px 26px;border-radius:30px;font-weight:600;border:0;cursor:pointer;font-size:1rem;font-family:inherit}
 .btn:hover{background:#0a5d20}
 .btn.gold{background:var(--gold);color:#222;margin-left:8px}
@@ -41,7 +42,12 @@ h2{font-family:'Fredoka',sans-serif;font-size:2rem;color:var(--dark);margin-bott
 .ticks li::before{content:"🚗 "}
 .ticks li{margin:6px 0;font-weight:600}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:22px}
-.gallery img{width:100%;height:180px;object-fit:cover;border-radius:14px}
+.gallery img{width:100%;height:190px;object-fit:cover;border-radius:14px}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin:24px 0 36px}
+.review{background:#fff;border-radius:18px;padding:20px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.stars{color:var(--gold);font-size:1.2rem;letter-spacing:2px}
+.review p{margin:8px 0}
+.review strong{color:var(--green)}
 form{display:grid;gap:14px;max-width:560px;margin-top:20px}
 input,select,textarea{width:100%;padding:12px;border:1px solid #bbb;border-radius:10px;font:inherit}
 label{font-weight:600;font-size:.9rem}
@@ -57,7 +63,7 @@ footer .plain li::before{content:""}
 .float{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:10px;z-index:60}
 .float a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:1.6rem;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 .wa{background:#25d366}.call{background:var(--green)}
-@media(max-width:760px){
+@media(max-width:860px){
  nav ul{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;padding:16px 20px;gap:12px}
  nav ul.open{display:flex}
  .burger{display:block}
@@ -76,6 +82,7 @@ footer .plain li::before{content:""}
    <li><a href="#about">About Us</a></li>
    <li><a href="#services">Services</a></li>
    <li><a href="#gallery">Gallery</a></li>
+   <li><a href="#reviews">Reviews</a></li>
    <li><a href="#booking">Book Now</a></li>
    <li><a href="#contact">Contact Us</a></li>
   </ul></nav>
@@ -86,6 +93,7 @@ footer .plain li::before{content:""}
  <div class="wrap">
   <small>Journey Beyond Expectations</small>
   <h1>Shadow Travel Hub</h1>
+  <div class="loc">📍 Travels in Ooty · Ooty to Coimbatore</div>
   <p>Enjoy smooth, memorable journeys through scenic routes with trusted drivers, timely service and comfort.</p>
   <a href="#booking" class="btn">Reserve Now ♥</a>
   <a href="tel:+919003296620" class="btn gold">Call 9003296620</a>
@@ -96,7 +104,7 @@ footer .plain li::before{content:""}
  <div class="wrap">
   <p class="tag">About Our Travels</p>
   <h2>Premium Travel Experiences For Every Traveler</h2>
-  <p>Shadow Travel Hub is committed to providing safe, reliable and comfortable travel experiences. We offer expertly planned sightseeing tours, pickup and drop services and customized travel packages. Our focus is on quality service, customer satisfaction and creating memorable journeys for every traveler.</p>
+  <p>Shadow Travel Hub is based in Ooty and is committed to providing safe, reliable and comfortable travel experiences. We run trips from Ooty to Coimbatore and to other South Indian destinations. We offer expertly planned sightseeing tours, pickup and drop services and customized travel packages. Our focus is on quality service, customer satisfaction and creating memorable journeys for every traveler.</p>
   <br>
   <p class="tag">Why Choose Us</p>
   <h2>Memorable Journeys Start Here</h2>
@@ -117,8 +125,8 @@ footer .plain li::before{content:""}
   <div class="cards">
    <div class="card"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600" alt="Address Pickup"><h3>Address Pickup</h3><button class="btn" onclick="pick('Address Pickup')">Book</button></div>
    <div class="card"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600" alt="Airport Transfer"><h3>Airport Transfer</h3><button class="btn" onclick="pick('Airport Transfer')">Book</button></div>
-   <div class="card"><img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600" alt="Sightseeing Tours"><h3>Sightseeing Tours</h3><button class="btn" onclick="pick('Sightseeing Tour')">Book</button></div>
-   <div class="card"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600" alt="Outstation Trips"><h3>Outstation Trips</h3><button class="btn" onclick="pick('Outstation Trip')">Book</button></div>
+   <div class="card"><img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600" alt="Sightseeing Tours"><h3>Ooty Sightseeing Tours</h3><button class="btn" onclick="pick('Ooty Sightseeing Tour')">Book</button></div>
+   <div class="card"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600" alt="Ooty to Coimbatore"><h3>Ooty to Coimbatore</h3><button class="btn" onclick="pick('Ooty to Coimbatore')">Book</button></div>
   </div>
  </div>
 </section>
@@ -128,15 +136,58 @@ footer .plain li::before{content:""}
   <p class="tag">Gallery</p>
   <h2>Our Vehicles & Journeys</h2>
   <div class="gallery">
-   <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=500" alt="Bus">
-   <img src="https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=500" alt="Tempo traveller">
-   <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=500" alt="SUV">
-   <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=500" alt="Sedan">
+   <img src="car1.jpg" alt="Our car 1">
+   <img src="car2.jpg" alt="Our car 2">
+   <img src="car3.jpg" alt="Our car 3">
+   <img src="car4.jpg.jpeg" alt="Our car 4">
+   <img src="car5.jpg.jpeg" alt="Our car 5">
   </div>
  </div>
 </section>
 
-<section id="booking" class="alt">
+<section id="reviews" class="alt">
+ <div class="wrap">
+  <p class="tag">Customer Reviews</p>
+  <h2>What Our Travelers Say</h2>
+
+  <!-- REPLACE these 3 sample reviews with your real customers' reviews -->
+  <div class="reviews">
+   <div class="review">
+    <div class="stars">★★★★★</div>
+    <p>Driver arrived on time and the car was clean and comfortable. Great sightseeing trip.</p>
+    <strong>- Sample Customer 1</strong>
+   </div>
+   <div class="review">
+    <div class="stars">★★★★★</div>
+    <p>Smooth Ooty to Coimbatore drop and a fair price. Will book again.</p>
+    <strong>- Sample Customer 2</strong>
+   </div>
+   <div class="review">
+    <div class="stars">★★★★☆</div>
+    <p>Friendly driver who knew all the scenic spots. Very good service.</p>
+    <strong>- Sample Customer 3</strong>
+   </div>
+  </div>
+
+  <h2 style="font-size:1.5rem">Write a Review</h2>
+  <p>Travelled with us? Share your experience. It is sent to us on WhatsApp.</p>
+  <form id="reviewForm">
+   <div><label for="rname">Your name</label><input id="rname" required></div>
+   <div><label for="rrate">Rating</label>
+    <select id="rrate" required>
+     <option value="5">★★★★★ - Excellent</option>
+     <option value="4">★★★★ - Very good</option>
+     <option value="3">★★★ - Good</option>
+     <option value="2">★★ - Fair</option>
+     <option value="1">★ - Poor</option>
+    </select></div>
+   <div><label for="rtext">Your review</label><textarea id="rtext" rows="4" required></textarea></div>
+   <button class="btn" type="submit">Send Review on WhatsApp</button>
+  </form>
+ </div>
+</section>
+
+<section id="booking">
  <div class="wrap">
   <p class="tag">Reservation</p>
   <h2>Book Your Trip on WhatsApp</h2>
@@ -148,7 +199,8 @@ footer .plain li::before{content:""}
     <select id="service" required>
      <option value="">Select a service</option>
      <option>Address Pickup</option><option>Airport Transfer</option>
-     <option>Sightseeing Tour</option><option>Outstation Trip</option>
+     <option>Ooty Sightseeing Tour</option><option>Ooty to Coimbatore</option>
+     <option>Outstation Trip</option>
     </select></div>
    <div><label for="pickup">Pickup location</label><input id="pickup" required></div>
    <div><label for="drop">Drop location</label><input id="drop" required></div>
@@ -165,14 +217,77 @@ footer .plain li::before{content:""}
  <div class="wrap">
   <div class="cols">
    <div><h4>Quick Links</h4>
-    <ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact Us</a></li></ul></div>
+    <ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact Us</a></li></ul></div>
    <div><h4>Types of Service</h4>
-    <ul><li>Address Pickup</li><li>Airport Transfer</li><li>Sightseeing Tours</li><li>Outstation Trips</li></ul></div>
+    <ul><li>Address Pickup</li><li>Airport Transfer</li><li>Ooty Sightseeing Tours</li><li>Ooty to Coimbatore</li></ul></div>
    <div><h4>Contact Details</h4>
     <ul class="plain">
      <li>📞 <a href="tel:+919003296620">+91 90032 96620</a></li>
      <li>💬 <a href="https://wa.me/918904224229" target="_blank" rel="noopener">WhatsApp: +91 89042 24229</a></li>
+     <li>📍 Shadow Travel Hub, Ooty, Tamil Nadu<br>Travels: Ooty to Coimbatore</li>
      <!-- ADD YOUR EMAIL: <li>✉️ <a href="mailto:youremail@gmail.com">youremail@gmail.com</a></li> -->
     </ul>
     <div class="social">
-     <a href="https://www.instagram.com/shadow_travel_hub_55
+     <a href="https://www.instagram.com/shadow_travel_hub_5572" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+     <!-- ADD FACEBOOK: <a href="https://www.facebook.com/YOUR_FACEBOOK_ID" target="_blank" rel="noopener" aria-label="Facebook">f</a> -->
+     <a href="https://wa.me/918904224229" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+    </div></div>
+  </div>
+  <p class="copy">© 2026 Shadow Travel Hub, Ooty. All rights reserved.</p>
+ </div>
+</footer>
+
+<div class="float">
+ <a class="wa" href="https://wa.me/918904224229?text=Hello%20Shadow%20Travel%20Hub%2C%20I%20want%20to%20book%20a%20ride." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+ <a class="call" href="tel:+919003296620" aria-label="Call">📞</a>
+</div>
+
+<script>
+var WA_NUMBER = "918904224229"; // WhatsApp number that receives bookings and reviews
+document.getElementById('burger').onclick = function(){
+  document.getElementById('menu').classList.toggle('open');
+};
+document.querySelectorAll('#menu a').forEach(function(a){
+  a.onclick = function(){ document.getElementById('menu').classList.remove('open'); };
+});
+function pick(s){
+  document.getElementById('service').value = s;
+  document.getElementById('booking').scrollIntoView();
+}
+document.getElementById('date').min = new Date().toISOString().split('T')[0];
+function v(id){ return document.getElementById(id).value.trim(); }
+function sendWA(msg){
+  window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
+}
+document.getElementById('bookForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  sendWA(
+    "*New Booking - Shadow Travel Hub, Ooty*\n\n" +
+    "Name: " + v('name') + "\n" +
+    "Phone: " + v('phone') + "\n" +
+    "Service: " + v('service') + "\n" +
+    "Pickup: " + v('pickup') + "\n" +
+    "Drop: " + v('drop') + "\n" +
+    "Date: " + v('date') + "\n" +
+    "Time: " + v('time') + "\n" +
+    "Passengers: " + v('pax') + "\n" +
+    "Notes: " + (v('notes') || "-")
+  );
+});
+document.getElementById('reviewForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  sendWA(
+    "*New Review - Shadow Travel Hub*\n\n" +
+    "Name: " + v('rname') + "\n" +
+    "Rating: " + v('rrate') + "/5\n" +
+    "Review: " + v('rtext')
+  );
+});
+</script>
+</body>
+</html>
+
+ 
+
+
+   
