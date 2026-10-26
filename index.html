@@ -20,7 +20,7 @@ body{font-family:'Poppins',sans-serif;background:var(--light);color:var(--text);
 .wrap{max-width:900px;margin:0 auto;padding:32px 20px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
-.card p{margin:8px 0}
+.card p{margin:8px 0;word-wrap:break-word}
 .card small{color:var(--green);font-weight:600}
 h2{font-family:'Fredoka',sans-serif;color:var(--green);margin:36px 0 14px}
 form{background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 10px rgba(0,0,0,.07);display:grid;gap:12px}
@@ -34,7 +34,7 @@ button,.btn{background:var(--green);color:#fff;border:0;border-radius:8px;paddin
 .btn.wa{background:#25d366}
 .contact{text-align:center}
 .contact .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.float{position:fixed;right:16px;bottom:16px;background:#25d366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+#msg{text-align:center;font-weight:600;color:var(--green)}
 footer{text-align:center;padding:24px;color:#777;font-size:.85rem}
 </style>
 </head>
@@ -51,16 +51,11 @@ footer{text-align:center;padding:24px;color:#777;font-size:.85rem}
 </section>
 
 <main class="wrap">
-  <!-- REPLACE these samples with real customer reviews -->
-  <div class="grid" id="list">
-    <div class="card"><div class="stars">★★★★★</div><p>Smooth Ooty to Coimbatore drop. Driver was on time and very polite.</p><small>— Customer Name, Coimbatore</small></div>
-    <div class="card"><div class="stars">★★★★★</div><p>Great sightseeing tour. Covered all the main spots without any rush.</p><small>— Customer Name, Chennai</small></div>
-    <div class="card"><div class="stars">★★★★☆</div><p>Airport pickup was hassle-free and the car was clean.</p><small>— Customer Name, Bengaluru</small></div>
-  </div>
+  <div class="grid" id="list"><p>Loading reviews...</p></div>
 
   <h2>Share Your Experience</h2>
   <form id="f">
-    <div><label for="n">Your name</label><input id="n" required></div>
+    <div><label for="n">Your name</label><input id="n" maxlength="60" required></div>
     <div><label for="s">Service used</label>
       <select id="s"><option>Sightseeing Tour</option><option>Ooty to Coimbatore</option><option>Airport Transfer</option><option>Pickup &amp; Drop</option><option>Other</option></select></div>
     <div><label>Rating</label>
@@ -71,8 +66,9 @@ footer{text-align:center;padding:24px;color:#777;font-size:.85rem}
         <input type="radio" name="r" id="r2" value="2"><label for="r2">★</label>
         <input type="radio" name="r" id="r1" value="1"><label for="r1">★</label>
       </div></div>
-    <div><label for="m">Your review</label><textarea id="m" rows="4" required></textarea></div>
-    <button type="submit">Submit Review</button>
+    <div><label for="m">Your review</label><textarea id="m" rows="4" maxlength="500" required></textarea></div>
+    <button type="submit" id="sub">Submit Review</button>
+    <p id="msg"></p>
   </form>
 
   <section class="contact">
@@ -85,38 +81,58 @@ footer{text-align:center;padding:24px;color:#777;font-size:.85rem}
     </div>
   </section>
 </main>
-
-<a class="float" id="wafloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 <footer>© Shadow Travel Hub – Car Travels in Ooty</footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 // ===== EDIT HERE =====
-var PHONE="91XXXXXXXXXX";          // WhatsApp/call number: country code + number, no + or spaces
-var SHOW="+91 XXXXX XXXXX";        // How the number appears on the page
+var PHONE="91XXXXXXXXXX";        // contact number: country code + number
+var SHOW="+91 XXXXX XXXXX";      // how it appears on the page
+var firebaseConfig = {
+  // PASTE HERE the values from Firebase (apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId)
+};
 // =====================
 
-var wa="https://wa.me/"+PHONE;
 document.getElementById("callbtn").href="tel:+"+PHONE;
-document.getElementById("wabtn").href=wa+"?text="+encodeURIComponent("Hi Shadow Travel Hub, I want to book a car.");
-document.getElementById("wafloat").href=wa;
+document.getElementById("wabtn").href="https://wa.me/"+PHONE+"?text="+encodeURIComponent("Hi Shadow Travel Hub, I want to book a car.");
 document.getElementById("shownum").textContent=SHOW;
+
+firebase.initializeApp(firebaseConfig);
+var col=firebase.firestore().collection("reviews");
+var list=document.getElementById("list");
+
+col.orderBy("createdAt","desc").limit(50).onSnapshot(function(snap){
+  list.innerHTML="";
+  if(snap.empty){list.innerHTML="<p>No reviews yet. Be the first!</p>";return;}
+  snap.forEach(function(d){
+    var v=d.data();
+    var card=document.createElement("div");card.className="card";
+    var st=document.createElement("div");st.className="stars";
+    st.textContent="★".repeat(v.rating)+"☆".repeat(5-v.rating);
+    var p=document.createElement("p");p.textContent=v.message;
+    var sm=document.createElement("small");sm.textContent="— "+v.name+" ("+v.service+")";
+    card.append(st,p,sm);list.appendChild(card);
+  });
+},function(){list.innerHTML="<p>Reviews could not be loaded.</p>";});
 
 document.getElementById("f").addEventListener("submit",function(e){
   e.preventDefault();
-  var n=document.getElementById("n").value.trim(),
-      s=document.getElementById("s").value,
-      r=document.querySelector("input[name=r]:checked").value,
-      m=document.getElementById("m").value.trim();
-  var card=document.createElement("div");card.className="card";
-  var st=document.createElement("div");st.className="stars";
-  st.textContent="★".repeat(r)+"☆".repeat(5-r);
-  var p=document.createElement("p");p.textContent=m;
-  var sm=document.createElement("small");sm.textContent="— "+n+" ("+s+")";
-  card.append(st,p,sm);
-  document.getElementById("list").prepend(card);
-  var text="New review for Shadow Travel Hub\nName: "+n+"\nService: "+s+"\nRating: "+r+"/5\nReview: "+m;
-  window.open(wa+"?text="+encodeURIComponent(text),"_blank");
-  e.target.reset();
+  var btn=document.getElementById("sub"),msg=document.getElementById("msg");
+  btn.disabled=true;
+  col.add({
+    name:document.getElementById("n").value.trim(),
+    service:document.getElementById("s").value,
+    rating:parseInt(document.querySelector("input[name=r]:checked").value,10),
+    message:document.getElementById("m").value.trim(),
+    createdAt:firebase.firestore.FieldValue.serverTimestamp()
+  }).then(function(){
+    msg.textContent="Thank you! Your review is now on the website.";
+    e.target.reset();btn.disabled=false;
+  }).catch(function(){
+    msg.textContent="Sorry, something went wrong. Please try again.";
+    btn.disabled=false;
+  });
 });
 </script>
 </body>
